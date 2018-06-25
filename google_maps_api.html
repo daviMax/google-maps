@@ -23,13 +23,18 @@
 
 
 
+<button id="btn1">Zoom(x5)</button>
+<button id="btn2">Zoom(x10)</button>
+<button id="btn3">Zoom(x15)</button>
+
 
 <script>
 
-    function initMap() {
+    function initMap(zLevel) {
+        zLevel = (zLevel === undefined) ? 5 : zLevel;
         var mapCanvas = document.getElementById('map-canvas');
         var mapOptions = {
-            zoom: 5,
+            zoom: zLevel,
             center: {
                 lat: 32.450016,
                 lng: -93.745599
@@ -65,6 +70,33 @@
             infowindow.open();
         });
     }
+
+    var listener = function () {
+        console.log('You zoomed (x5).');
+        initMap(5);
+    };
+    document.getElementById('btn1').addEventListener('click', listener, false);
+
+
+
+
+    var listener2 = function () {
+        console.log('You zoomed (x10).');
+        initMap(10);
+    };
+    document.getElementById('btn2').addEventListener('click', listener2, false);
+
+
+
+
+    var listener3 = function () {
+        console.log('You zoomed (x15).');
+        initMap(15);
+    };
+    document.getElementById('btn3').addEventListener('click', listener3, false);
+
+
+
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxIPbNd4ljI6NdSyP5ugk4XoKDzw2VEZM&callback=initMap"
